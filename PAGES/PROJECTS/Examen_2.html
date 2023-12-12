@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <head>
+        <title>Invitacion Boda</title>
+        <link rel="stylesheet" href="/ASSETS/CSS/indexInvitacion.css">
+    </head>
+</head>
+<style>
+    body {
+        background-image: url('/ASSETS/IMG/wallpaper.png');
+        background-size: cover; 
+        background-attachment: fixed;
+    }
+</style>
+<body>
+    <div class="container">
+        <section class="portada">
+            <h2 class="big-text-2">Nuestra boda</h2>
+            <h1 class="big-text">José y Sofia</h1>
+            <img src="/ASSETS/IMG/casados.png" height="50%" width="50%">
+        </section>
+
+        <br>
+
+        <section class="descripcion">
+            <h2>¡Únete a nosotros en el día más importante de nuestras vidas! Celebraremos nuestra unión con una ceremonia llena de amor y alegría, seguida de una encantadora recepción.</h2>
+        </section>
+
+        
+        <br>
+        <hr class="linea"><br>
+        <section class="info">
+            <h2>Fecha, Hora y Lugar del Evento</h2>
+            <p>Fecha: 15 de Noviembre, 2023</p>
+            <p>Hora: 17:00 hrs</p>
+            <p>Lugar: Jardines del Palacio, Calle Principal, Ciudad del Sol</p>
+        </section>
+        <br> 
+        <section class="confirmacion">
+            <h2>Confirmación de Invitación</h2>
+            <p>¡Esperamos contar con tu presencia! Por favor, confirma tu asistencia:</p>
+            <button onclick="confirmarAsistencia('aceptar')">Aceptar</button>
+            <button onclick="confirmarAsistencia('rechazar')">Rechazar</button>
+        </section>
+        <br>
+        <hr class="linea">
+    </div>
+    <div>
+        <br>
+        <br>
+        <footer class="informacion-desarrollador">
+            <p>Esta invitación ha sido diseñada por <strong>Eventos Creativos UPWEB</strong>, especialistas en la creación de invitaciones y diseño de eventos memorables.</p>
+            <p>Desarrollado por: <a href="/index.html">Luis Reyes</a></p>
+        </footer>
+
+    </div>
+
+    <script>
+        function confirmarAsistencia(opcion) {
+            if (opcion === 'aceptar') {
+                alert("Gracias por confirmar tu asistencia. ¡Esperamos verte en la boda!");
+            } else if (opcion === 'rechazar') {
+                alert("Lamentamos escuchar que no podrás asistir. ¡Esperamos verte en otra ocasión!");
+            }
+        }
+    </script>
+</body>
+</html>

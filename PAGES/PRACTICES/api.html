@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+    <style>
+        h2{
+           color: rgb(168, 0, 0); 
+        }
+    </style>
+</head>
+
+<body>    
+    <select id="categorySelect" onchange="getSelectedValue()">
+        <option value="electronics">Electronics</option>
+        <option value="jewelery">Jewelery</option>
+        <option value="men's clothing">Men's clothing</option>
+        <option value="women's clothing">Women's clothing</option>
+    </select>
+    <div id="productContainer"></div>
+
+    <script type="text/javascript" src="/ASSETS/JS/api.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            EXAMEN
+        </title>
+        
+    </head>
+    <body>
+        <center>
+        <h2>Convolutional neural networks for detection of<br>
+            hand-written drawings
+        </h2>
+        <table>
+            <tr>
+                <td align="center">Sergio E. Valenzuela</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td align="center">Juan B. Calabrese</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td align="center">Josue Ortiz-Medina</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td align="center">Claudia N. Sánchez</td>
+            </tr>
+            <tr>
+                <td align="center">Universidad Panamericana</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td align="center">Universidad Panamericana</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td align="center">Universidad Panamericana</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td align="center">Universidad Panamericana</td>
+            </tr>
+            <tr>
+                <td align="center">Facultad de Ingeniería</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td align="center">Facultad de Ingeniería</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td align="center">Facultad de Ingeniería</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td align="center">Facultad de Ingeniería</td>
+            </tr>
+            <tr>
+                <td align="center">Aguascalientes, México</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td align="center">Aguascalientes, México</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td align="center">Aguascalientes, México</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td align="center">Aguascalientes, México</td>
+            </tr>
+            <tr>
+                <td align="center">sevalenzuela@up.edu.mx</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td align="center">bernardo.calabrese@up.edu.mx</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td align="center">jortizm@up.edu.mx</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td align="center">cnsanchez@up.edu.mx</td>
+            </tr>
+        </table>
+        
+        
+        <br>
+        <table>
+            <tr>
+            <td> <b>
+                &nbsp;&nbsp;&nbsp;&nbsp;Abstract— Convolutional Neural Networks (CNN) have<br>
+                been used since the late 80’s. Nevertheless, until the 2000’s when<br>
+                they begun to be popular for image classification tasks, thanks<br>
+                to the improvements in computation performance of electronic<br>
+                devices and new algorithms development. However, most of the<br>
+                classifiers are oriented towards the processing of real-world<br>
+                images. This document presents a CNN for hand-written<br>
+                drawings recognition. The dataset consists of 710,000 images<br>
+                that correspond to 71 different classes, each one with around<br>
+                10,000 samples. The dataset was randomly divided into a<br>
+                training set (80%) and a testing set (20%). The CNN classifier<br>
+                achieved an accuracy of 84.79% for classifying the samples on<br>
+                the testing set. The classification results showed perfect<br>
+                identification for 10 classes, whereas 6 classes were poorly<br>
+                classified. It is foreseen that the results presented here can fuel<br>
+                applications where identification of hand-made drawings are<br>
+                critical, such as neuropsychological tests.<br>
+                <br>
+                <i>&nbsp;&nbsp;&nbsp;&nbsp;Keywords—deep learning, convolutional neural network,<br>
+                artificial intelligence, hand-written drawings<br>
+                </i><br><br>
+            </b>
+                <center>I. INTRODUCTION</center><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Convolutional neural networks (CNN) have been applied<br>
+                to visual applications since two decades ago at least [1], [2].<br>
+                Nevertheless, besides some disperse reported applications, the<br>
+                CNN remained relatively inactive until the middle of 2000’s,<br>
+                when the developments on computational and data science,<br>
+                along with the availability of diverse databases complemented<br>
+                with advanced algorithms, lead to their rapid improvement<br>
+                and use [3]. This work aims to contribute to the CNN<br>
+
+                application to the classification of images based on hand-<br>
+                written drawings, an area that has been somewhat unexplored.<br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;Image classification can be defined as the process of image<br>
+                categorization within one or more predefined classes, and is<br>
+                one of the fundamental problems on computer vision and<br>
+                related applications, such as localization, detection and<br>
+                segmentation [4]–[7]. Image classification is an easy task for<br>
+                humans, but a difficult one for a computer. Some of the typical<br>
+
+                complications include object shape dependence on point-of-<br>
+                observation and object variability [8]. Now, it can be<br>
+
+                considered that image classification is a specific application<br>
+                of pattern recognition and classification, which is generally<br>
+                defined as the mapping over a big group of data, from which<br>
+                smaller sub-groups or classes of data can be arranged<br>
+                according to specific criteria. The pattern classification<br>
+                process is basically composed of two parts: one,<br>
+                characteristics extraction phase, and second, decision making<br>
+                or classification phase. During the characteristics extraction<br>
+                phase, the largest dimension is transformed into a set of<br>
+                metrics, termed characteristics. These metrics thus represent<br>
+        
+            </td>
+            <td width="20px">
+            </td>
+            <td>
+                intrinsic information about the patterns. One of the most<br>
+                important features of CNNs is that they include both parts of<br>
+                image classification, which means that they can perform the<br>
+                features extraction and their classification, making their<br>
+                implementation an easy task.<br><br>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;Currently, most of the classifiers and convolution<br>
+                techniques aim to the processing of “real” images, i.e., images<br>
+                from scenes in the 3D world we interact. This kind of<br>
+                approaches in fact make these techniques suitable for robotic<br>
+                and automation applications. Nevertheless, an increasing<br>
+                amount of reports demonstrate the feasibility of using CNN<br>
+                for hand-written images, with interesting advances in the field<br>
+                of text and languages recognition [9]–[11]. Moreover, another<br>
+                interesting and potential field where hand-written images<br>
+                recognition and classification could have an important impact<br>
+                is human health, given the potential of automated<br>
+                interpretation of human writing or drawings from the<br>
+                psychology point of view, or more precisely, in the<br>
+                development of neuropsychological tests (NT) [12], [13].<br>
+                Some works already report the use of machine learning (ML)<br>
+                methodologies for improving the detection and diagnosis of<br>
+                neurodegenerative diseases, describing the analysis of images<br>
+                from specialized techniques such as computerized<br>
+                tomography (CT), magnetic resonance imaging (MRI), etc.<br>
+                [14], [15]. Fortunately, ML has also been explored for easier,<br>
+                faster, and cheaper alternatives for tests and diagnosis by<br>
+                means of hand-writing recognition and classification [12],<br>
+                [16], [17]. NT represent a specialized area within clinic<br>
+                psychology. Psychologists use the contextual information<br>
+                from these tests for diverse kinds of evaluations (e.g., a child<br>
+                with learning difficulties or a patient suffering of a<br>
+                neurodegenerative disease). As it is previously mentioned,<br>
+                there are several medical procedures such as CT, MRI or<br>
+                positron-emission tomography (PET), which can show<br>
+                graphically parts of the brain with physiological disorders.<br>
+                Nonetheless, NT can reveal deep aspects of the whole brain<br>
+                functioning. Unfortunately, some of these procedures are<br>
+                lengthy, and composed of integral exams which include a<br>
+                wide variety of subtests like the Halstead-Reitan [18] or Luria-<br>
+                Nebraska [19]. One common feature of these tests is the use<br>
+                of figures or specific forms of drawings. The scoring in these<br>
+                tests are based in a variety of possible errors that the subjects<br>
+                can commit while copying the figures, including missing<br>
+                details, collision or superposition, inability of shape<br>
+                completion (such as circles or squares), disproportionate sizes<br>
+                and angles, or misorientations.<br><br>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;Given that the score patterns within these subtests can be<br>
+                used for specific cognitive failures identification, an<br>
+                automated tool for hand-written drawings identification and<br>
+                classification could provide a key advantage for the<br>
+
+            </td>
+            </tr>
+        </table>
+        <br>
+        <hr>
+
+        <table>
+        <tr>
+            <td><br>
+                developing of NT based on ML. As mentioned, most of the<br>                
+                previous works on this topic have been oriented towards the<br>
+                recognition and classification of characters, within the<br>
+                language scope. Some seminal reports consider the<br>
+                recognition of specific features in hand-written drawings [20],<br>
+                which will be used as a basement for further develop a CNN<br>
+                strategy for drawings classification. This work aimsto provide<br>
+                
+                an efficient ML methodology for the classification of hand-<br>
+                written sketches, which would provide a solid framework for<br>
+                
+                further developments towards their automatic interpretation.<br>
+                The results demonstrate a high potential of CNN architectures<br>
+                for drawings recognition and classification, which ultimately<br>
+                could be applied to a wide variety of tests, including NT for<br>
+                automated psychological evaluations.<br><br>
+                The rest of the manuscript is organized as follows. Section<br>
+                II shows the methodology of this work, starting with the data<br>
+                description and then comes how the image classification was<br>
+                performed. The results and discussion are presented in section<br>
+                III, with the concluding remarks summarized in section IV.<br><br><br>
+                
+                <center>II. METHODOLOGY<br><br></center>
+                
+                <i>A. Data description<br></i>
+                &nbsp;&nbsp;&nbsp;&nbsp;The hand-drawing images used in the experiments were<br>
+                taken from a dataset of Quick, Draw! a game that recollects<br>
+                hand-written draws from millions of users around the world.<br>
+                [21]. The dataset consists of 710,000 images that correspond<br>
+                to 71 different classes each one with around 10,000 samples.<br>
+                The list of classes are airplane, backpack, bat, beard, bee,<br>
+                bird, bush, butterfly, cactus, car, cat, cloud, cow, dog, door,<br>
+                ear, eye, eyeglasses, face, fish, flower, foot, garden, goatee,<br>
+                grass, hand, hat, helmet, horse, house, jacket, leg, lightning,<br>
+                moon, mountain, mouse, moustache, mouth, mushroom,<br>
+                necklace, nose, ocean, palm_tree, pants, pig, rabbit, raccoon,<br>
+                rain, rainbow, river, sailboat, screwdriver, sea_turtle, sheep,<br>
+                shoe, shorts, skyscraper, smiley_face, snake, sock, squirrel,<br>
+                star, sun, sweater, tent, The_Mona_Lisa, tornado, tree, t-shirt,<br>
+                umbrella, and yoga. Figure 1 shows an example of the<br>
+                images.<br><br><br>
+
+                <i>B. Image classification<br></i>
+                &nbsp;&nbsp;&nbsp;&nbsp;As it is mentioned in Section I, CNNs have been<br>
+                successfully used for image classification, and its power has<br>
+                been probed in different contexts. For that reason, it was<br>
+                decided to use a CNN for the classification of drawing<br>
+                images.<br>
+                CNNs are advanced networks due to the unidirectional<br>
+                way they manage the information, from the inputs toward the<br>
+                output. CNNs are, as it occurs in general with artificial-NN<br>
+                (ANN), inspired in biological NN. The basic unit in an ANN<br>
+                is a neuron, where a set of numerical inputs xi are weighted<br>
+                by a corresponding weight wi<br>
+                
+                . As can be seen in Equation 1.<br>
+                The results are added, and finally, an activation function φ is<br>
+                applied to yield the final result y . The objective of the<br>
+                activation function is to create nonlinear models.<br>
+            <img src="../../ASSETS/IMG/Formula1.png" alt="Formula1">   
+            <br>
+            </td>
+            </td>
+            <td width="20px">
+            </td>
+            <td>
+                <br>
+                <img src="../../ASSETS/IMG/Figure1.png" alt="Figure1">  <br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;The brain visual cortex, which consists of alternate<br>
+                neuronal layers with different complexity, constitutes a<br>
+                recurrent model for CNNs architectures. These architectures<br>
+                can thus include specific layers for specific functions as<br>
+                convolution, categorization, and sampling, grouped within<br>
+                modules of one or more neuronal layers fully connected.<br>
+                Then, a deep-CNN (DCNN) is built by stacking individual<br>
+                modules. Figure 2 shows a typical architecture of a CNN used<br>
+                for image classification; an image is provided as an input for<br>
+                the DCNN, normally consisting of several convolution and<br>
+                grouping stages. From that point, the outcomes become the<br>
+                inputs for one or more fully connected NN layers. Finally, the<br>
+                last fully connected NN layer is in charge of labeling the<br>
+                classes. <br><br>
+                <img src="../../ASSETS/IMG/Figure2.png" alt="Figure2">  <br>
+                The used CNN architecture is composed of 8 layers. Each<br>
+                layer is described as follows:<br><br>
+                <ul> 
+                    <li>1<sup>st</sup>: Convolutional layer, with 32 convolutional<br>
+                        kernels of 3x3 size. The activation function is relu.</li>
+                    <li>2<sup>nd</sup>: Max pooling layer, where the pool size is 2x2.</li>
+                </ul>
+            </td>
+            <br>
+        </tr>
+        </table>
+        <hr>
+
+        <table>
+            <tr>
+                <td>
+                    <ul> 
+                        <li>3<sup>rd</sup>: Convolutional layer, with 64 convolutional<br>
+                            kernels of 3x3 size. The activation function is relu.</li>
+                        <li>4<sup>ht</sup>: Max pooling layer, where the pool size is 2x2.</li>
+                        <li>5<sup>ht</sup>: Convolutional layer, with 128 convolutional<br>
+                            kernels of 3x3 size. The activation function is relu.<br>
+                            We added 20% of dropout.</li>
+                        <li>6<sup>ht</sup>:Max pooling layer, where the pool size is 2x2.</li>
+                        <li>7<sup>ht</sup>: Dense flatten layer with 128 neurons. The<br>
+                            activation function is relu.</li>
+                        <li>8<sup>ht</sup>: Dense flatten layer with 71 neurons. The<br>
+                            activation function is softmax. We added 20% of<br>
+                            dropout.</li>
+                    </ul><br><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;The total number of parameters of the CNN is 249,415.<br>
+                    The optimization algorithm used for training the CNN was<br>
+                    Adam [22], where the loss was defined as cross-entropy for<br>
+                    maximizing the accuracy. If y and ŷ are two vectors in R<br>
+                    <sup>n</sup>
+                    that contain the real and predicted labels for n samples, the<br>
+                    accuracy is defined in Equations 2, where φ(⋅,⋅) is a function<br>
+                    that returns 1 if their inputs are equal or 0 otherwise. On the<br>
+                    other hand, considering y and ŷ as two matrices in R
+                    <sup>nk</sup>,<br>
+                    where n are the number of samples and k the number of<br>
+                    classes. The matrix y contains the real labels, the row i that<br>
+                    represent the sample i has only one 1 in the column that<br>
+                    corresponds to the real class, the rest of the cells in that row<br>
+                    are 0. The matrix ŷ contains the predicted labels that<br>
+                    correspond to values between 0 and 1 that can be seen as the<br>
+                    likelihood to each sample belongs to every the class. Using<br>
+                    these matrices, the cross entropy is defined as Equation 3,<br>
+                    where i and j represent the sample and the class, respectively.<br>
+                    <img src="../../ASSETS/IMG/Formula2.png" alt="Formula2">  <br><br>
+                    For calculating the performance of the CNN classifier, the<br>
+                    images were randomly divided in 568,000 samples for<br>
+                    training (80%) and 142,000 (20%) for testing. In addition,<br>
+                    when training the CNN, the training set was randomly divided<br>
+                    into training (90%) and validation set (10%).<br><br><br>
+
+                    <center>III. RESULTS AND DISCUSSION</center><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;The metric used for measuring the CNN performance is<br>
+                    accuracy. It counts the percentage of labels that the classifier<br>
+                    predicts correctly. Its value ranges from 0 to 1, being 1 a<br>
+                    perfect prediction.<br><br>
+                    The CNN architecture described in section II achieved an<br>
+                    accuracy of 0.8479. Considering a multiclass problem of<br>
+                    hand-written drawings with a high number of classes, 71 in<br>
+                    this case, the obtained accuracy is quite relevant. The<br>
+                    confusion matrix is visually presented in Figure 3 where, as<br>
+                    it was expected, the diagonal matrix has high values, meaning<br>
+                    an almost perfect identification. The classes with high<br>
+                    confusion are the ones showed in Table 1. On the other hand,<br>
+                </td>
+<br>                </td>
+<br>                <td width="20px"><br>
+                </td>
+<br>                <td>
+                    the classes that were predicted with an accuracy of 1.0 were<br>
+                    screwdriver, eye, rainbow, star, sun, cactus, the Mona Lisa,<br>
+                    tornado, backpack, and house. It is interesting to compare<br>
+                    these results with other related with hand-written drawings<br>
+                    recognition by CNN. For instance, accuracies as high as 89%<br>
+
+                    were achieved, but for a small number of classes for sketch-<br>
+                    made human expressions[20]. This highlights the importance<br>
+
+                    of this work, where 71 classes were recognized and classified.<br><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Figure 4 shows some incorrect classification as a result of<br>
+                    the test process, but that can be considered as correct answers<br>
+                    since the images really seem to be what the classifier is<br>
+                    detecting on the image. This is shown in the confusion matrix,<br>
+                    as it can observed in Figure 3. Most of the wrong<br>
+                    classification cases are the result of various classes that have<br>
+                    high similarity with others. The CNN could be improved<br>
+                    reducing the classes that are similar on aspect (e.g. sweater,<br>
+                    t-shirt and jacket), choosing the one with the best accuracy<br>
+                    result, and reducing the number of classes from 5 to 10.<br><br>
+                    <img src="../../ASSETS/IMG/Table1.png" alt="Formula1">  <br><br>
+                    
+                    <table border="1" cellpadding="5" width="90%">
+                        <tr>
+                            <td width="14px" valign="top" align="center">Class</td>
+                            <td width="18px" valign="top" align="center">Accuracy<br>of the<br>class<br></td>
+                            <td width="18px" valign="top" align="center">Class with the<br>higher confusion</td>
+                            <td width="18px" valign="top" align="center">Class with<br>the second<br>higher<br>confusion</td>
+                        </tr>
+                        <tr>
+                            <td width="14px" valign="top" align="center">Dog</td>
+                            <td width="18px" valign="top" align="center">0.63</td>
+                            <td width="18px" valign="top" align="center">Horse: 0.09</td>
+                            <td width="18px" valign="top" align="center">Cow: 0.08</td>
+                        </tr>
+                        <tr>
+                            <td width="14px" valign="top" align="center">Sweater</td>
+                            <td width="18px" valign="top" align="center">0.66</td>
+                            <td width="18px" valign="top" align="center">T-shirt: 0.22</td>
+                            <td width="18px" valign="top" align="center">Jacket: 0.12</td>
+                        </tr>
+                        <tr>
+                            <td width="14px" valign="top" align="center">Raccoon</td>
+                            <td width="18px" valign="top" align="center">0.68</td>
+                            <td width="18px" valign="top" align="center">Cat: 0.08</td>
+                            <td width="18px" valign="top" align="center">Squirrel:<br>0.07</td>
+                        </tr>
+                        <tr>
+                            <td width="14px" valign="top" align="center">Goatte</td>
+                            <td width="18px" valign="top" align="center">0.83</td>
+                            <td width="18px" valign="top" align="center">Beard: 0.14</td>
+                            <td width="18px" valign="top" align="center">Necklace:<br>0.03</td>
+                        </tr>
+                        <tr>
+                            <td width="14px" valign="top" align="center">Skyscraper</td>
+                            <td width="18px" valign="top" align="center">0.83</td>
+                            <td width="18px" valign="top" align="center">Door: 0.08</td>
+                            <td width="18px" valign="top" align="center">Leg: 0.03</td>
+                        </tr>
+                        <tr>
+                            <td width="14px" valign="top" align="center">Cow</td>
+                            <td width="18px" valign="top" align="center">0.83</td>
+                            <td width="18px" valign="top" align="center">Dog: 0.06</td>
+                            <td width="18px" valign="top" align="center">Horse: 0.04</td>
+                        </tr>
+                    </table>
+                    <img src="../../ASSETS/IMG/Figure3.png" alt="Formula1">  <br><br>
+                </td>
+            </tr>
+        </table>
+        <hr>
+
+        <table>
+            <tr>
+                <td>
+                    <img src="../../ASSETS/IMG/Figure4.png" alt="Formula1">  <br><br>
+                    Figure 5 shows the convergence of the parameters'<br>
+                    optimization algorithm for CNN. It can be observed that the<br>
+                    results are reached around 200 epochs. In addition, it can be<br>
+                    verified that CNN is not overfitting the training set because<br>
+                    the loss of the validation set is lower than the training loss.<br>
+                    <img src="../../ASSETS/IMG/Figure5.png" alt="Formula1">  <br>
+                    
+                    <center>IV. CONCLUSIONS</center><br><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;This document presents a methodology based on deep<br>
+                    learning for classifying hand-written drawings. The dataset<br>
+                    was composed of 710,000 images of hand-written drawings of<br>
+                    71 different classes. The list of classes are airplane, backpack,<br>
+                    bat, beard, bee, bird, bush, butterfly, cactus, car, cat, cloud,<br>
+                    cow, dog, door, ear, eye, eyeglasses, face, fish, flower, foot,<br>
+                    garden, goatee, grass, hand, hat, helmet, horse, house, jacket,<br>
+                    leg, lightning, moon, mountain, mouse, moustache, mouth,<br>
+                    mushroom, necklace, nose, ocean, palm_tree, pants, pig,<br>
+                    rabbit, raccoon, rain, rainbow, river, sailboat, screwdriver,<br>
+                    sea_turtle, sheep, shoe, shorts, skyscraper, smiley_face,<br><br><br>
+                </td>
+                </td>
+                <td width="20px">
+                </td>
+                <td>
+                    snake, sock, squirrel, star, sun, sweater, tent, The_Mona_Lisa,<br>
+                    tornado, tree, t-shirt, umbrella, and yoga. Each class contains<br>
+                    around 10,000 samples. The dataset was randomly divided<br>
+                    into training (80%) and testing set (20%).<br><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;The classifier was proposed as a CNN composed of 8<br>
+                    layers, with a total of 249,415 parameters. The optimization<br>
+                    algorithm was ADAM. The performance of the classifier was<br>
+                    an accuracy of 84.79%, being the following classes the one<br>
+                    with a perfect performance: screwdriver, eye, rainbow, star,<br>
+                    sun, cactus, the mona lisa, tornado, backpack, and house. On<br>
+                    the other hand, the classes with lower performance are dog,<br>
+                    sweater, raccoon, goatte, skyscraper, and cow. However, their<br>
+                    performance can be explained because the labels are related.<br>
+                    For example, the class dog was confused with horse and cow,<br>
+                    and, the class sweater was confused with t-shirt and jacket.<br>
+
+<br>                &nbsp;&nbsp;&nbsp;&nbsp;As future work, we plan to use the CNN presented in this<br>
+                    document for identifying key hand-written drawings to<br>
+                    interpret neuropsychological tests.<br><br><br><br>
+
+                    <center>ACKNOWLEDGMENTS</center><br>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;The authors would like to acknowledge the computational<br>
+                    facilities of the Faculty of Engineering, Universidad<br>
+                    Panamericana campus Aguascalientes.<br><br><br><br>
+
+                    <center>REFERENCES</center><br>
+
+                    [1] Q. Z. Wu, Y. Le Cun, L. D. Jackel, and B. S. Jeng, “On-<br>
+                    line recognition of limited-vocabulary Chinese character<br>
+                    using multiple convolutional neural networks,” in<br>
+                    Proceedings - IEEE International Symposium on Circuits<br>
+                    and Systems, 1993, vol. 4, pp. 2435–2438.<br>
+                    [2] D. Wei, B. Sahiner, H. P. Chan, and N. Petrick,<br>
+                    “Detection of masses on mammograms using a<br>
+                    convolution neural network,” in ICASSP, IEEE<br>
+                    International Conference on Acoustics, Speech and Signal<br>
+                    Processing - Proceedings, 1995, vol. 5, pp. 3483–3486.<br>
+                    [3] Y. LeCun, Y. Bengio, and G. Hinton, “Deep learning,”<br>
+                    Nature, vol. 521, no. 7553, pp. 436–444, May 2015.<br>
+                    [4] K. Simonyan and A. Zisserman, “Very deep convolutional<br>
+                    networks for large-scale image recognition,” in 3rd<br>
+                    International Conference on Learning Representations,<br>
+                    ICLR 2015 - Conference Track Proceedings, 2015.<br>
+                    [5] M. Moetesum, O. Zeeshan, and I. Siddiqi, “Multi-object<br>
+                    sketch segmentation using convolutional object<br>
+                    detectors,” in Tenth International Conference on Graphics<br>
+                    and Image Processing (ICGIP 2018), 2019, p. 110.<br>
+                    [6] A. Karpathy and L. Fei-Fei, “Deep Visual-Semantic<br>
+                    Alignments for Generating Image Descriptions,” 2015.<br>
+                    [7] D. C. C. Cires ̧an, U. Meier, J. Masci, L. M. Gambardella,<br>
+                    and J.  ̈ Urgen Schmidhuber, “Flexible, High Performance<br>
+                    Convolutional Neural Networks for Image Classification,”<br>
+                    Jun. 2011.<br>
+                    [8] M. A. Ranzato, F.-J. Huang, Y.-L. Boureau, and Y.<br>
+                    Lecun, “Unsupervised Learning of Invariant Feature<br>
+                    Hierarchies with Applications to Object Recognition.”<br><br><br>
+                </td>
+            </tr>
+        </table>
+        <hr>
+
+        </center>
+    </body> 
+</html>
