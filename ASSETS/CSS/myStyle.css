@@ -1,0 +1,43 @@
+body{
+    background-color: black;
+    color: white;
+}
+h3{
+    color:brown
+}
+p{
+    color:rgb(88, 126, 31) /*!important;*/
+}
+a{
+    /*color:rgb(88, 126, 31) /*!important;*/
+    color:inherit
+}
+
+.titulo{
+    color: rgb(101, 25, 160);   
+}
+
+/* clase*/
+.texto{
+    color: rgb(4, 108, 111);
+}
+
+/*se le da priorida dal id*/
+#titulo{
+    color: rgb(160, 113, 25);   
+}
+
+#texto{
+    color:hotpink
+}
+
+/* efecta a todo, le da la menor prioridad
+*{
+    background-color: black;
+    color: white;
+}*/
+
+/* los corchetes definen que es un atributo el que se quiere modificar
+[href]{
+    color: chartreuse;
+}*/

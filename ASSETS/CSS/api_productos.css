@@ -1,0 +1,234 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+nav {
+    background-color: rgba(41, 71, 104, 0.557);
+    padding: 10px;
+}
+
+nav a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #294768;
+}
+
+p {
+    color: #333;
+}
+.carrouselText {
+    color: #ececec;
+}
+.zoom-image:hover img {
+    transform: scale(1.1); /* You can adjust the scaling factor as needed */
+    transition: transform 0.3s ease; /* Add a smooth transition effect */
+}
+footer {
+    background-color: #181c20;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    opacity: 1;
+}
+
+/* Estilos adicionales */
+
+/* Estilos para el body */
+body {
+    background-color: #fff !important; /* Blanco en formato hexadecimal */
+    /* Otros estilos si los necesitas */
+}
+
+/* Estilos para h1 */
+h1 {
+    margin: 0;
+}
+
+
+/* Estilos para las imágenes dentro del carousel */
+.carousel-item {
+    position: relative;
+}
+
+.carousel-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0),rgb(25, 28, 32));
+}
+
+/* Estilos para las imágenes dentro del carousel */
+.carousel-item img {
+    max-height: 500px;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Estilos para el hr */
+#productDivider {
+    border: none;
+    height: 25px;
+
+    background-color: #181c20;  
+    margin: 0;
+    opacity: 1;
+}
+
+.title-category-container
+{
+    height: 200px;
+}
+/* Estilo para el texto "Products" */
+h2.section-title {
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilo para el texto antes del select */
+h2.mb-4 {
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilos para el contenedor de productos */
+#productContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+/* Estilos para cada producto */
+.product {
+    width: calc(33.33% - 20px);
+    box-sizing: border-box;
+    border: 2px;
+    padding: 20px;
+    margin: 0 0 20px;
+    text-align: center;
+    height: min-content;
+}
+
+@media (max-width: 992px) {
+    .product {
+        width: calc(50% - 20px);
+    }
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    padding: 15px;
+    border: 2px solid #ddd;
+    background-color: white;
+    height: 200px;
+}
+
+.product h4,
+.product .price,
+.product .category,
+.product .desc {
+    height: 30px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.product .desc {
+    height: 100px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.product h4 {
+    color: #333;
+}
+
+.product .price {
+    color: green;
+    font-weight: bold;
+}
+
+.product .category {
+    color: blue;
+    font-style: italic;
+}
+
+/* Estilos para el botón "See More" */
+.see-more {
+    color: #8b8b8b;
+    cursor: pointer;
+    display: block;
+    margin-top: 40px;
+    margin-bottom: -20px;
+}
+
+.mt-4 {
+    margin-top: 0 !important;
+}
+
+.see-more:hover {
+    color: #3c8ade;
+}
+
+/* Estilos para el contenedor de categorías en pantallas pequeñas */
+.col-md-3 {
+    background-color: #000;
+    margin-left: 100px solid #000;
+}
+
+/* Estilos para la descripción del producto */
+.description {
+    padding: 10px;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, .03);
+}
+
+/* Estilos para el select de categorías */
+#categorySelect {
+    appearance: none;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#categorySelect:hover {
+    background-color: #f5f5f5;
+}
+
+#categorySelect:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Añade estilos para el cambio de cursor en las opciones del select */
+#categorySelect option {
+    cursor: pointer;
+}

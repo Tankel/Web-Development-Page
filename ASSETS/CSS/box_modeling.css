@@ -1,0 +1,30 @@
+.container_bloque{
+    background-color:gold;
+    width: 200px;
+    height: 300px;
+
+}
+.container_inline{
+    background-color:greenyellow;
+}   
+.container_bloque2{
+    background-color:rgb(0, 145, 255);
+    width: 200px;
+    height: 300px;
+    padding: 10px 20px;
+    border: 15px black solid;
+    margin: 20px;
+    outline: 20px rgb(61, 76, 247) solid;
+}
+.container_inline2{
+    background-color:rgb(246, 156, 196);
+    padding: 20px;  
+}   
+
+.container_image{
+    border: 10px rgb(168, 255, 37) solid;
+    outline: 10px rgb(168, 255, 37) solid;
+    outline-offset: -100px;
+}   
+
+
